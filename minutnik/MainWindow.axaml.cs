@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Avalonia.Controls;
 using Avalonia.Threading;
 
@@ -11,7 +12,8 @@ public partial class MainWindow : Window
     private int _completedCycles;
     private bool _isWorkPhase = true;
     private bool _hasStarted;
-
+    private readonly List<string> _history = new();
+    
     public MainWindow()
     {
         InitializeComponent();
@@ -26,6 +28,8 @@ public partial class MainWindow : Window
         WorkDurationInput.ValueChanged += (_, _) => OnDurationChanged(isWorkPhase: true);
         BreakDurationInput.ValueChanged += (_, _) => OnDurationChanged(isWorkPhase: false);
         UpdateDisplay();
+        _history.Add($"{DateTime.Now:HH:mm} — cykl {_completedCycles}");
+        HistoryList.ItemsSource = _history.ToArray();
     }
 
     private void OnStartPauseClick(object? sender, Avalonia.Interactivity.RoutedEventArgs e)

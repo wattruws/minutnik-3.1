@@ -46,6 +46,7 @@
                                FontWeight="Bold"
                                Foreground="#172033"
                                FontFamily="Inter" />
+                   
                     <Border Grid.Column="1"
                             Width="1"
                             Height="76"
@@ -64,6 +65,7 @@
                                    FontSize="38"
                                    FontWeight="Bold"
                                    Foreground="#172033" />
+                        <ListBox Name="HistoryList" />
                     </StackPanel>
                 </Grid>
 
